@@ -7,11 +7,11 @@ export const choose = (array: Array<any>): any => {
     return array[Math.floor(Math.random() * array.length)];
   };
 
-export const getRateFromFrequencies = (freq, baseFreq): number => {
+export const getRateFromFrequencies = (freq: number, baseFreq: number): number => {
   return freq/baseFreq;
 };
 
-export const getClosestMember = (subject, set) => {
+export const getClosestMember = (subject: any, set: any[]) => {
   return set.reduce( (accum, member) => {
     const prevDistance = accum - subject;
     const currentDistance = member - subject;
@@ -20,11 +20,11 @@ export const getClosestMember = (subject, set) => {
   }, set[0]);
 };
 
-export const findInCollection = (collection, predicateFunction) => {
+export const findInCollection = (collection: any[], predicateFunction: Function) => {
   return collection.reduce( (accum, member) => predicateFunction(member) ? member : accum );
 };
 
-export const mapToDomain = (set, domain) => {
+export const mapToDomain = (set: number[], domain: number[]) => {
   const setOffset = Math.min(...domain) - Math.min(...set);
   const domainRange = ( Math.max(...domain) - Math.min(...domain) );
   const setRange = ( Math.max(...set) - Math.min(...set) );
@@ -35,7 +35,7 @@ export const mapToDomain = (set, domain) => {
   // TODO: I did the true/false backwards on this but everything uses it this way.
 export const flipCoin = (probability=0.5): boolean => (Math.random() < probability) ? false : true;
 
-export const makeFunction = (value): Function => {
+export const makeFunction = (value: any): Function => {
   if(typeof value === "function") {
     return value;
   }
@@ -44,7 +44,7 @@ export const makeFunction = (value): Function => {
   }
 };
 
-export const windex = (weights: Array<number>): number => {
+export const windex = (weights: number[]): number => {
   let sumOfWeights = weights.reduce( (prev, curr) => prev + curr);
 
   let randNum = Math.random() * sumOfWeights;
@@ -58,6 +58,9 @@ export const windex = (weights: Array<number>): number => {
       return i;
     }
   }
+
+  // Returning the first member if a proper weight couldn't be found
+  return 0;
 };
 
 export const normalize = (coll: number[]): number[] => {
@@ -65,7 +68,7 @@ export const normalize = (coll: number[]): number[] => {
   return collSum > 0 ? coll.map( (weight) => weight / collSum) : coll.map(() => 0);
 };
 
-export const isEquivalent = (a, b): boolean => {
+export const isEquivalent = (a: object|any, b: object|any): boolean => {
   // Create arrays of property names
   var aProps = Object.getOwnPropertyNames(a);
   var bProps = Object.getOwnPropertyNames(b);
@@ -91,7 +94,7 @@ export const isEquivalent = (a, b): boolean => {
   return true;
 };
 
-export const mod = (num, modulo) => (num % modulo + modulo) % modulo;
+export const mod = (num: number, modulo: number) => (num % modulo + modulo) % modulo;
 
 export const getSequentialRandomIndex = ( lastIndex: number, length: number ): number => {
   const possibleIndexes = Array(length).fill(0).map( (item,i) => i).filter(item => item !== lastIndex);

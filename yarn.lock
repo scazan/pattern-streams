@@ -2,6 +2,10 @@
 # yarn lockfile v1
 
 
+"@types/node@^10.11.3":
+  version "10.11.3"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-10.11.3.tgz#c055536ac8a5e871701aa01914be5731539d01ee"
+
 markovn@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/markovn/-/markovn-1.0.1.tgz#ba3dd1ab7cd518bbba8892e47d6f902547b10f81"

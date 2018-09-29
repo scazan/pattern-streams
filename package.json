@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "A collection of patterns for generating streams/sequences based on SuperCollider patterns.",
   "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
+    "build": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -23,6 +25,7 @@
   },
   "homepage": "https://github.com/scazan/pattern-streams#readme",
   "dependencies": {
+    "@types/node": "^10.11.3",
     "markovn": "^1.0.1"
   }
 }
