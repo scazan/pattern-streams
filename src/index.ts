@@ -1,5 +1,5 @@
 /*
- * Basic collectiong of Patterns using generators
+ * Basic collection of Patterns using generators
  */
 
 export const Pattern = (pattern: any) => [() => pattern.next().value];
