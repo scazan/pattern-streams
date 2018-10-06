@@ -101,3 +101,21 @@ export const getSequentialRandomIndex = ( lastIndex: number, length: number ): n
 
   return choose(possibleIndexes);
 };
+
+
+export default {
+  mtof,
+  ftom,
+  choose,
+  getRateFromFrequencies,
+  getClosestMember,
+  findInCollection,
+  mapToDomain,
+  flipCoin,
+  makeFunction,
+  windex,
+  normalize,
+  isEquivalent,
+  mod,
+  getSequentialRandomIndex,
+};

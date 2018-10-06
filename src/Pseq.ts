@@ -1,4 +1,4 @@
-export default function* Pseq(values: any[], repetitions: number){
+export default function* Pseq(values: any[], repetitions?: number){
   var index: number = 0;
   var result = (): any => values[index++ % values.length];
 
