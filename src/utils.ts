@@ -32,8 +32,7 @@ export const mapToDomain = (set: number[], domain: number[]) => {
   return set.map( member => getClosestMember( (( (member - Math.min(...set)) / setRange) * domainRange ) + setOffset, domain));
 };
 
-  // TODO: I did the true/false backwards on this but everything uses it this way.
-export const flipCoin = (probability=0.5): boolean => (Math.random() < probability) ? false : true;
+export const flipCoin = (probability=0.5): boolean => (Math.random() < probability) ? true : false;
 
 export const makeFunction = (value: any): Function => {
   if(typeof value === "function") {

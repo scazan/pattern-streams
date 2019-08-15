@@ -49,7 +49,7 @@ class Genetic {
     const topGenerationScore: number = scores[indexOfHighestScore];
 
 
-    const coinFlipForMutate = flipCoin(0.25);
+    const coinFlipForMutate = flipCoin(0.75);
 
     if(coinFlipForMutate) {
       indexOfNextHighestScore = Math.floor(Math.random() * scores.length);
@@ -76,8 +76,8 @@ class Genetic {
     return [population[indexOfHighestScore], population[indexOfNextHighestScore] ];
   }
 
-  // TODO: Make more than one type of mating
   // Take in two arrays (parents) and mate them in a number of different ways to produce multiple offspring
+  // TODO: Make more than one type of mating
   mateGenerations(parents: number[][]): number[][] {
 
     const splicedOffspring = this.getSplicedOffspring(parents[0], parents[1]);
