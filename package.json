@@ -19,7 +19,7 @@
     "sequencer"
   ],
   "author": "Scott Cazan",
-  "license": "ISC",
+  "license": "GPL-3.0-or-later",
   "bugs": {
     "url": "https://github.com/scazan/pattern-streams/issues"
   },
