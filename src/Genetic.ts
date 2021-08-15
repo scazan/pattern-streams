@@ -39,9 +39,9 @@ class Genetic {
 
       // If there are two of the same scores, choose one randomly
       if(scores[indexOfHighestScore] === scores[i]) {
-        const coinFlip = Math.random();
+        const coinFlip = flipCoin(0.5);
 
-        indexOfHighestScore = (coinFlip > 0.5) ? indexOfHighestScore : i;
+        indexOfHighestScore = coinFlip ? indexOfHighestScore : i;
       }
     }
 

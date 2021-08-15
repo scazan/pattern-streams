@@ -1,7 +1,7 @@
-const Markov = require('markovn').default;
+import { MarkovN } from 'markovn';
 
 export default function Pmarkov(seed: any[], order: number, initialState: any[]) {
-  const markovChain = new Markov(seed, order);
+  const markovChain = new MarkovN(seed, order);
 
   return markovChain.asPattern(initialState);
 };
