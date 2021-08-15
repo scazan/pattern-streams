@@ -1,4 +1,4 @@
-export default function* Prand(values: Array<any>, repetitions: number){
+export default function* Prand(values: Array<any>, repetitions?: number){
   var result = (): any => values[Math.floor(Math.random() * values.length)];
 
   if(repetitions == undefined) {
