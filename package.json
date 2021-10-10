@@ -26,7 +26,7 @@
   "homepage": "https://github.com/scazan/pattern-streams#readme",
   "dependencies": {
     "@types/node": "^16.6.1",
-    "markovn": "^2.0.0",
+    "markovn": "^2.1.0",
     "ts-node": "^10.2.0",
     "typescript": "^4.3.5"
   }
