@@ -1,14 +1,28 @@
-import { unwrapValue } from './pattern-utils';
+import { unwrapValue, resettableGenerator } from './pattern-utils';
 
-export default function* Pseq(values: any[], repetitions?: number){
+export function* Pseq(values: any[], repetitions?: number) {
   let index: number = 0;
   let result = (): any => {
-    const nextElement = values[index++ % values.length];
+    let nextElement = values[index++ % values.length];
+    let value;
 
-    return unwrapValue(nextElement);
+    value = unwrapValue(nextElement);
+
+    if (value == null && nextElement.next().done) {
+      nextElement.reset();
+      nextElement = values[index++ % values.length];
+
+      value = unwrapValue(nextElement);
+    }
+    else if (value == null) {
+      nextElement = values[index++ % values.length];
+      value = unwrapValue(nextElement);
+    }
+
+    return value;
   };
 
-  if(repetitions == undefined) {
+  if(repetitions == null) {
     while(true) {
       yield result();
     }
@@ -19,3 +33,5 @@ export default function* Pseq(values: any[], repetitions?: number){
     }
   }
 };
+
+export default (values: any[], repetitions?: number) => resettableGenerator(Pseq)(values, repetitions);
