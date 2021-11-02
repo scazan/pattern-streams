@@ -2,7 +2,7 @@
   "name": "pattern-streams",
   "version": "1.0.0",
   "description": "A collection of patterns for generating streams/sequences based on SuperCollider patterns.",
-  "main": "src/index.ts",
+  "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsc",
