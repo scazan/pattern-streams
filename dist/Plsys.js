@@ -26,41 +26,42 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.Plsys = void 0;
+// @ts-ignore
+var lindenmayer_1 = __importDefault(require("lindenmayer"));
 var pattern_utils_1 = require("./pattern-utils");
-function Prand(values, repetitions) {
-    var result, i;
+function Plsys(options, repetitions) {
+    var axiom, rules, currentIteration, lsys, nextState;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
-                result = function () {
-                    var nextElement = values[Math.floor(Math.random() * values.length)];
-                    return (0, pattern_utils_1.unwrapValue)(nextElement);
-                };
-                if (!(repetitions == undefined)) return [3 /*break*/, 4];
+                axiom = options.axiom, rules = options.rules;
+                currentIteration = 0;
+                lsys = new lindenmayer_1.default({
+                    axiom: axiom,
+                    productions: rules,
+                });
                 _a.label = 1;
             case 1:
                 if (!true) return [3 /*break*/, 3];
-                return [4 /*yield*/, result()];
+                // if we have repetitions and we are at the limit, reset the lsys to loop
+                if ((repetitions != null) && (currentIteration % repetitions) === 0) {
+                    lsys.setAxiom(axiom);
+                }
+                nextState = lsys.iterate();
+                currentIteration++;
+                return [4 /*yield*/, nextState];
             case 2:
                 _a.sent();
                 return [3 /*break*/, 1];
-            case 3: return [3 /*break*/, 8];
-            case 4:
-                i = 0;
-                _a.label = 5;
-            case 5:
-                if (!(i < repetitions)) return [3 /*break*/, 8];
-                return [4 /*yield*/, result()];
-            case 6:
-                _a.sent();
-                _a.label = 7;
-            case 7:
-                i++;
-                return [3 /*break*/, 5];
-            case 8: return [2 /*return*/];
+            case 3: return [2 /*return*/];
         }
     });
 }
-exports.default = Prand;
+exports.Plsys = Plsys;
 ;
+exports.default = (function (options, repetitions) { return (0, pattern_utils_1.resettableGenerator)(Plsys)(options, repetitions); });

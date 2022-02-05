@@ -38,15 +38,15 @@ function Pseq(values, repetitions) {
                 result = function () {
                     var nextElement = values[index++ % values.length];
                     var value;
-                    value = pattern_utils_1.unwrapValue(nextElement);
+                    value = (0, pattern_utils_1.unwrapValue)(nextElement);
                     if (value == null && nextElement.next().done) {
                         nextElement.reset();
                         nextElement = values[index++ % values.length];
-                        value = pattern_utils_1.unwrapValue(nextElement);
+                        value = (0, pattern_utils_1.unwrapValue)(nextElement);
                     }
                     else if (value == null) {
                         nextElement = values[index++ % values.length];
-                        value = pattern_utils_1.unwrapValue(nextElement);
+                        value = (0, pattern_utils_1.unwrapValue)(nextElement);
                     }
                     return value;
                 };
@@ -77,4 +77,4 @@ function Pseq(values, repetitions) {
 }
 exports.Pseq = Pseq;
 ;
-exports.default = (function (values, repetitions) { return pattern_utils_1.resettableGenerator(Pseq)(values, repetitions); });
+exports.default = (function (values, repetitions) { return (0, pattern_utils_1.resettableGenerator)(Pseq)(values, repetitions); });
