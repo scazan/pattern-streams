@@ -28,8 +28,11 @@ export function* Pseq(values: any[], repetitions?: number) {
     }
   }
   else {
-    for(let i=0; i<repetitions; i++) {
-      yield result();
+    // repetitions represents the number of times to repeat the entire given sequence
+    for(let i=0; i < repetitions; i++) {
+      for(let i=0; i < values.length; i++) {
+        yield result();
+      }
     }
   }
 };

@@ -13,7 +13,7 @@ export default function* Prand(values: Array<any>, repetitions?: number){
     }
   }
   else {
-    for(let i=0; i<repetitions; i++) {
+    for(let i=0; i < repetitions; i++) {
       yield result();
     }
   }

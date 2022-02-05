@@ -26,10 +26,14 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-var __spreadArray = (this && this.__spreadArray) || function (to, from) {
-    for (var i = 0, il = from.length, j = to.length; i < il; i++, j++)
-        to[j] = from[i];
-    return to;
+var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
+    if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
+        if (ar || !(i in from)) {
+            if (!ar) ar = Array.prototype.slice.call(from, 0, i);
+            ar[i] = from[i];
+        }
+    }
+    return to.concat(ar || Array.prototype.slice.call(from));
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Genetic = void 0;
@@ -60,13 +64,13 @@ var Genetic = /** @class */ (function () {
             }
             // If there are two of the same scores, choose one randomly
             if (scores[indexOfHighestScore] === scores[i]) {
-                var coinFlip = utils_1.flipCoin(0.5);
+                var coinFlip = (0, utils_1.flipCoin)(0.5);
                 indexOfHighestScore = coinFlip ? indexOfHighestScore : i;
             }
         }
         var indexOfNextHighestScore = 0;
         var topGenerationScore = scores[indexOfHighestScore];
-        var coinFlipForMutate = utils_1.flipCoin(0.75);
+        var coinFlipForMutate = (0, utils_1.flipCoin)(0.75);
         if (coinFlipForMutate) {
             indexOfNextHighestScore = Math.floor(Math.random() * scores.length);
         }
@@ -107,7 +111,7 @@ var Genetic = /** @class */ (function () {
         var coinFlip = Math.random() > 0.5 ? 1 : 0;
         var parents = coinFlip == 0 ? [parentOne, parentTwo] : [parentTwo, parentOne];
         var splitPoint = Math.floor(parentOne.length / 2);
-        var splicedOffspring = __spreadArray(__spreadArray([], (parents[0].slice(0, splitPoint))), (parents[1].slice(splitPoint - 1, parents[1].length - 1)));
+        var splicedOffspring = __spreadArray(__spreadArray([], (parents[0].slice(0, splitPoint)), true), (parents[1].slice(splitPoint - 1, parents[1].length - 1)), true);
         return splicedOffspring;
     };
     // Returns a numerical distance between an input and a goal
@@ -130,7 +134,7 @@ var Genetic = /** @class */ (function () {
         for (var i = 0; i < (newGenerations.length - 1); i++) {
             this.population.splice(Math.floor(Math.random() * (this.population.length - 1)), 1);
         }
-        this.population = __spreadArray(__spreadArray([], this.population), newGenerations);
+        this.population = __spreadArray(__spreadArray([], this.population, true), newGenerations, true);
         // For now randomly select one of the best generations
         var bestFitGeneration = newGenerations[Math.floor(Math.random() * (newGenerations.length * 0.999))];
         return bestFitGeneration;

@@ -30,7 +30,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.Pseq = void 0;
 var pattern_utils_1 = require("./pattern-utils");
 function Pseq(values, repetitions) {
-    var index, result, i;
+    var index, result, i, i_1;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
@@ -38,15 +38,15 @@ function Pseq(values, repetitions) {
                 result = function () {
                     var nextElement = values[index++ % values.length];
                     var value;
-                    value = pattern_utils_1.unwrapValue(nextElement);
+                    value = (0, pattern_utils_1.unwrapValue)(nextElement);
                     if (value == null && nextElement.next().done) {
                         nextElement.reset();
                         nextElement = values[index++ % values.length];
-                        value = pattern_utils_1.unwrapValue(nextElement);
+                        value = (0, pattern_utils_1.unwrapValue)(nextElement);
                     }
                     else if (value == null) {
                         nextElement = values[index++ % values.length];
-                        value = pattern_utils_1.unwrapValue(nextElement);
+                        value = (0, pattern_utils_1.unwrapValue)(nextElement);
                     }
                     return value;
                 };
@@ -58,23 +58,30 @@ function Pseq(values, repetitions) {
             case 2:
                 _a.sent();
                 return [3 /*break*/, 1];
-            case 3: return [3 /*break*/, 8];
+            case 3: return [3 /*break*/, 10];
             case 4:
                 i = 0;
                 _a.label = 5;
             case 5:
-                if (!(i < repetitions)) return [3 /*break*/, 8];
-                return [4 /*yield*/, result()];
+                if (!(i < repetitions)) return [3 /*break*/, 10];
+                i_1 = 0;
+                _a.label = 6;
             case 6:
-                _a.sent();
-                _a.label = 7;
+                if (!(i_1 < values.length)) return [3 /*break*/, 9];
+                return [4 /*yield*/, result()];
             case 7:
+                _a.sent();
+                _a.label = 8;
+            case 8:
+                i_1++;
+                return [3 /*break*/, 6];
+            case 9:
                 i++;
                 return [3 /*break*/, 5];
-            case 8: return [2 /*return*/];
+            case 10: return [2 /*return*/];
         }
     });
 }
 exports.Pseq = Pseq;
 ;
-exports.default = (function (values, repetitions) { return pattern_utils_1.resettableGenerator(Pseq)(values, repetitions); });
+exports.default = (function (values, repetitions) { return (0, pattern_utils_1.resettableGenerator)(Pseq)(values, repetitions); });
