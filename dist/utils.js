@@ -29,7 +29,7 @@ var mapToDomain = function (set, domain) {
     var setOffset = Math.min.apply(Math, domain) - Math.min.apply(Math, set);
     var domainRange = (Math.max.apply(Math, domain) - Math.min.apply(Math, domain));
     var setRange = (Math.max.apply(Math, set) - Math.min.apply(Math, set));
-    return set.map(function (member) { return exports.getClosestMember((((member - Math.min.apply(Math, set)) / setRange) * domainRange) + setOffset, domain); });
+    return set.map(function (member) { return (0, exports.getClosestMember)((((member - Math.min.apply(Math, set)) / setRange) * domainRange) + setOffset, domain); });
 };
 exports.mapToDomain = mapToDomain;
 var flipCoin = function (probability) {
@@ -92,7 +92,7 @@ var mod = function (num, modulo) { return (num % modulo + modulo) % modulo; };
 exports.mod = mod;
 var getSequentialRandomIndex = function (lastIndex, length) {
     var possibleIndexes = Array(length).fill(0).map(function (item, i) { return i; }).filter(function (item) { return item !== lastIndex; });
-    return exports.choose(possibleIndexes);
+    return (0, exports.choose)(possibleIndexes);
 };
 exports.getSequentialRandomIndex = getSequentialRandomIndex;
 exports.default = {

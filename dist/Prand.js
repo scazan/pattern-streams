@@ -35,7 +35,7 @@ function Prand(values, repetitions) {
             case 0:
                 result = function () {
                     var nextElement = values[Math.floor(Math.random() * values.length)];
-                    return pattern_utils_1.unwrapValue(nextElement);
+                    return (0, pattern_utils_1.unwrapValue)(nextElement);
                 };
                 if (!(repetitions == undefined)) return [3 /*break*/, 4];
                 _a.label = 1;
