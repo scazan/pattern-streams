@@ -38,6 +38,7 @@ function Pchoose(values, repetitions) {
                 result = function () {
                     var nextIndex = (0, utils_1.getSequentialRandomIndex)(lastIndex, values.length);
                     var nextElement = values[nextIndex];
+                    lastIndex = nextIndex;
                     return (0, pattern_utils_1.unwrapValue)(nextElement);
                 };
                 if (!(repetitions == undefined)) return [3 /*break*/, 4];

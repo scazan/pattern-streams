@@ -8,6 +8,8 @@ export default function* Pchoose(values: Array<any>, repetitions?: number){
     const nextIndex = getSequentialRandomIndex(lastIndex, values.length);
     const nextElement = values[nextIndex];
 
+    lastIndex = nextIndex;
+
     return unwrapValue(nextElement);
   };
 
