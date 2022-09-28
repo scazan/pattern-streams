@@ -1,5 +1,5 @@
 import { unwrapValue } from './pattern-utils';
-import { getSequentialRandomIndex } from './utils';
+import { getSequentialRandomIndex } from '../utils';
 
 export default function* Pchoose(values: Array<any>, repetitions?: number){
   let lastIndex = 0;

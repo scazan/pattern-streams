@@ -1,4 +1,4 @@
-import { Genetic } from "./Genetic";
+import { Genetic } from "../Genetic";
 
 export default function* Pgenetic(inputPopulation: number[][], goal: number[]) {
   let genetic: Genetic = new Genetic(inputPopulation, goal);
